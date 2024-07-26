@@ -8,7 +8,7 @@ import ru.kata.spring.boot_security.demo.entity.Role;
 import ru.kata.spring.boot_security.demo.entity.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
-@Service
+@Component
 public class Test {
 
     private final UserService userService;
