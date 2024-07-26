@@ -27,7 +27,7 @@
             <td th:utext="${user.getUsername()}">...</td>
             <td th:utext="${user.getEmail()}">...</td>
             <td>
-                <a th:href="@{/admin/updateInfo?id={id}(id=${user.getId()})}" th:text ="Change"></a>
+                <a th:href="@{/admin/updateInfo/{id}/form?id={id}(id=${user.getId()})}" th:text ="Change"></a>
             </td>
             <td>
                 <a th:href="@{/admin/deleteUser?id={id}(id=${user.id})}" th:text ="Delate"></a>

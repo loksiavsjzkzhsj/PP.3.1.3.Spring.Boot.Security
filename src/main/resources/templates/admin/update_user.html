@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New user form</title>
+    <title>Update user</title>
 </head>
 <body>
 <h2>User information</h2>
 <br>
 
 
-<form action="#" th:action="@{/admin/addNewUser/save}" th:object="${user}" method="POST">
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}" >
 
     <input type="hidden" th:field="*{id}" id="id">
     <label for="name">Enter name: </label>
@@ -24,12 +24,15 @@
     <div >
         <th:block th:each="role: ${rolesList}">
             <input type="checkbox" th:field="*{roles}"
-                   th:text="${role.getName()}" th:value="${role.getId()}" class="m-2" />
+                   th:text="${role.getName()}"  th:value="${role.getId()}" class="m-2" />
         </th:block>
     </div>
     <br>
     <input type="submit" value="Save!"
            onclick="window.location.href = '/admin'"/>
+    <br>
+    <a href="/admin">To all users.</a>
+
     <br>
 
 </form>
