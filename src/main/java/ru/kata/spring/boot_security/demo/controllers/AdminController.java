@@ -44,16 +44,15 @@ public class AdminController {
 
     @PostMapping("/addNewUser/save")
     public String saveUser(@ModelAttribute("user") User user) {
-            userService.create(user);
+        userService.create(user);
 
         return "redirect:/admin";
     }
 
-    @GetMapping ("/updateInfo/{id}/form")
+    @GetMapping("/updateInfo/{id}/form")
     public String changeUser(@PathVariable("id") Long userId, Model model) {
-        model.addAttribute("user", userService.findById(userId) );
+        model.addAttribute("user", userService.findById(userId));
         model.addAttribute("rolesList", roleService.findAll());
-        //userService.updateUser(userId, userService.findById(userId));
         return "admin/update_user";
     }
 
