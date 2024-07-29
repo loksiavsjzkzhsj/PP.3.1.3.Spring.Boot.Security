@@ -12,7 +12,8 @@ import ru.kata.spring.boot_security.demo.entity.User;
 import ru.kata.spring.boot_security.demo.repository.RoleRepository;
 import ru.kata.spring.boot_security.demo.repository.UserRepository;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -52,6 +53,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void updateUser(Long userId, User updateUser) {
         updateUser.setId(userId);
+        updateUser.setPassword(passwordEncoder.encode(updateUser.getPassword()));
         userRepository.save(updateUser);
     }
 
@@ -64,11 +66,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-         Optional<User> user = userRepository.findUserByEmail(email);
-         if (user.isEmpty()) {
-             throw new UsernameNotFoundException(email);
-         }
-         Hibernate.initialize(user.get().getRoles());
-         return user.get();
+        Optional<User> user = userRepository.findUserByEmail(email);
+        if (user.isEmpty()) {
+            throw new UsernameNotFoundException(email);
+        }
+        Hibernate.initialize(user.get().getRoles());
+        return user.get();
     }
 }

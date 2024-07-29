@@ -29,8 +29,8 @@ public class User implements UserDetails {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "users_roles",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id"))
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
     public User() {
@@ -67,7 +67,6 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    //@Override
     public String getPassword() {
         return password;
     }
@@ -84,7 +83,6 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    //@Transient
     public void addRole(Role role) {
         if (roles == null) {
             roles = new ArrayList<>();

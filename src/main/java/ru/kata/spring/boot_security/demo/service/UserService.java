@@ -1,4 +1,5 @@
 package ru.kata.spring.boot_security.demo.service;
+
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import ru.kata.spring.boot_security.demo.entity.User;
@@ -15,5 +16,5 @@ public interface UserService extends UserDetailsService {
 
     void delete(Long userId);
 
-    void updateUser(Long userId ,User user);
+    void updateUser(Long userId, User user);
 }
